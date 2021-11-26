@@ -1,9 +1,13 @@
 ﻿#include <iostream>
+#include <array>
+#include <chrono>
+
 #include "Helpers.h"
 
 using namespace std;
+using namespace chrono;
 
-const int N = 10;
+static const int N = 10;
 
 static void printNumbers(bool printOdd, int count)
 {
@@ -16,6 +20,40 @@ static void printNumbers(bool printOdd, int count)
 	}
 }
 
+
+
+static void printArray()
+{
+	static const int M = 10;
+
+	array<array<int, M>, M> matrix;
+	for (int i = 0; i < M; i++)
+	{
+		for (int j = 0; j < M; j++)
+		{
+			int value = i + j;
+			matrix[i][j] = value;
+			cout << value << " ";
+		}
+		cout << endl;
+	}
+
+	time_t tt = system_clock::to_time_t(system_clock::now());
+	struct tm local_tm;
+	localtime_s(&local_tm, &tt);
+	int currentDay = local_tm.tm_mday;
+
+	cout << "DAY " << currentDay << endl;
+
+	int rowIndex = currentDay % M;
+	int sum = 0;
+	for (int j = 0; j < M; j++)
+	{
+		sum += matrix[rowIndex][j];
+	}
+	cout << sum << endl;
+
+}
 
 int main()
 {
@@ -41,4 +79,7 @@ int main()
 
 	cout << endl;
 	printNumbers(false, N);
+
+	cout << endl;
+	printArray();
 }
