@@ -55,6 +55,29 @@ static void printArray()
 
 }
 
+class Vector
+{
+private:
+	int x, y, z;
+
+public:
+	Vector() : x(0), y(0), z(0) 
+	{}
+
+	Vector(int _x, int _y, int _z) : x(_x), y(_y), z(_z)
+	{}
+
+	void Print()
+	{
+		cout << "Vector {" << x << " " << y << " " << z << " " << "}" <<endl;
+	}
+
+	float Length()
+	{
+		return sqrt(x * x + y * y + z * z);
+	}
+};
+
 int main()
 {
 
@@ -82,4 +105,8 @@ int main()
 
 	cout << endl;
 	printArray();
+
+	Vector v(3, 0, 0);
+	v.Print();
+	cout << "Vector length " << v.Length() << endl;
 }
