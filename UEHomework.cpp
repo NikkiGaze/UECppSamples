@@ -3,6 +3,7 @@
 #include <chrono>
 
 #include "Helpers.h"
+#include "Stack.h"
 
 using namespace std;
 using namespace chrono;
@@ -19,8 +20,6 @@ static void printNumbers(bool printOdd, int count)
 		}
 	}
 }
-
-
 
 static void printArray()
 {
@@ -109,4 +108,13 @@ int main()
 	Vector v(3, 0, 0);
 	v.Print();
 	cout << "Vector length " << v.Length() << endl;
+
+	Stack<int> stack(10);
+	stack.Push(1);
+	stack.Push(2);
+	stack.Push(3);
+
+	cout << "Last stack elem " << stack.Pop() << endl;
+
+	return 0;
 }
