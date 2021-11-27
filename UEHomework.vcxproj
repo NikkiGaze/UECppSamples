@@ -142,6 +142,7 @@
     <ClCompile Include="UEHomework.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animal.h" />
     <ClInclude Include="Helpers.h" />
     <ClInclude Include="Stack.h" />
   </ItemGroup>
