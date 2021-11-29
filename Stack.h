@@ -5,14 +5,16 @@
 template <class T>
 class Stack
 {
-	const int maxSize;
+	static const int DEFAULT_SIZE = 2;
+	static const int SIZE_MULITPLIER = 2;
+	int maxSize;
 	int lastIndex = 0;
-	T* memory = nullptr;
+	T* memory = new T[DEFAULT_SIZE];
 
 public:
 	Stack(int _maxSize) : maxSize(_maxSize)
 	{
-		memory = new T[maxSize];
+		maxSize = DEFAULT_SIZE;
 	}
 
 	T Pop() 
@@ -30,14 +32,22 @@ public:
 
 	void Push(const T& in)
 	{
-		if (lastIndex < maxSize - 1)
+		lastIndex++;
+		if (lastIndex == maxSize)
 		{
-			lastIndex++;
-			memory[lastIndex] = in;
+			maxSize *= SIZE_MULITPLIER;
+			T* newBuff = new T[maxSize];
+			std::copy(memory, memory + maxSize, newBuff);
+			delete[] memory;
+			memory = newBuff;
 		}
-		else
-		{
-			throw std::runtime_error("Stack is full");
-		}
+
+		memory[lastIndex] = in;
+	}
+
+	~Stack()
+	{
+		delete[] memory;
 	}
 };
+

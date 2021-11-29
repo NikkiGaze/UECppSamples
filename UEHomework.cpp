@@ -118,7 +118,7 @@ int main()
 
 	cout << "Last stack elem " << stack.Pop() << endl;
 
-	Animal* animals[3] = { new Cat(), new Dog(), new Human() };
+	Animal* animals[3] = {new Cat(), new Dog(), new Human()};
 	for (int i = 0; i < 3; i++)
 	{
 		animals[i]->Voice();
